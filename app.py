@@ -11,11 +11,11 @@ import pyglet
 import os, time
 
 print ("-"*60)
-print ("       Project: Voice based Email for blind")
+print ("       Project: Voice based Email for visually impaired")
 print ("-"*60)
 
 #project name
-ts = gTTS(text="Project: Voice based Email for blind", lang='en')
+ts = gTTS(text="Project: Voice based Email for visually impaired", lang='en')
 tsname=("path/name.mp3")
 ts.save(tsname)
 
