@@ -15,15 +15,15 @@ print ("       Project: Voice based Email for blind")
 print ("-"*60)
 
 #project name
-tts = gTTS(text="Project: Voice based Email for blind", lang='en')
-ttsname=("path/name.mp3")
-tts.save(ttsname)
+ts = gTTS(text="Project: Voice based Email for blind", lang='en')
+tsname=("path/name.mp3")
+ts.save(tsname)
 
-music = pyglet.media.load(ttsname, streaming = False)
+music = pyglet.media.load(tsname, streaming = False)
 music.play()
 
 time.sleep(music.duration)
-os.remove(ttsname)
+os.remove(tsname)
 
 #login from os
 login = os.getlogin
@@ -31,36 +31,36 @@ print ("You are logged In from : "+login())
 
 #choices
 print ("1. Composed a mail.")
-tts = gTTS(text="option 1. Composed a mail.", lang='en')
-ttsname=("path/hello.mp3")
-tts.save(ttsname)
+ts = gTTS(text="option 1. Composed a mail.", lang='en')
+tsname=("path/hello.mp3")
+ts.save(tsname)
 
-music = pyglet.media.load(ttsname, streaming = False)
+music = pyglet.media.load(tsname, streaming = False)
 music.play()
 
 time.sleep(music.duration)
-os.remove(ttsname)
+os.remove(tsname)
 
 print ("2. Check your inbox")
-tts = gTTS(text="option 2. Check your inbox", lang='en')
-ttsname=("hello.mp3")
-tts.save(ttsname)
+ts = gTTS(text="option 2. Check your inbox", lang='en')
+tsname=("hello.mp3")
+ts.save(tsname)
 
 music = pyglet.media.load(ttsname, streaming = False)
 music.play()
 
 time.sleep(music.duration)
-os.remove(ttsname)
+os.remove(tsname)
 #this is for input choices
-tts = gTTS(text="Your choice ", lang='en')
-ttsname=("path/hello.mp3")
-tts.save(ttsname)
+ts = gTTS(text="Your choice ", lang='en')
+tsname=("path/hello.mp3")
+ts.save(ttsname)
 
-music = pyglet.media.load(ttsname, streaming = False)
+music = pyglet.media.load(tsname, streaming = False)
 music.play()
 
 time.sleep(music.duration)
-os.remove(ttsname)
+os.remove(tsname)
 
 #voice recognition part
 r = sr.Recognizer()
@@ -101,13 +101,13 @@ if int(text) == 1:
     mail.login('emailID','pswrd')                                                           #login section
     mail.sendmail('emailID','victimID',msg)                                                 #send section
     print ("Congrates! Your mail has been send. ")
-    tts = gTTS(text="Congrates! Your mail has been send. ", lang='en')
-    ttsname=("path/send.mp3")
-    tts.save(ttsname)
-    music = pyglet.media.load(ttsname, streaming = False)
+    ts = gTTS(text="Congrates! Your mail has been send. ", lang='en')
+    tsname=("path/send.mp3")
+    ts.save(tsname)
+    music = pyglet.media.load(tsname, streaming = False)
     music.play()
     time.sleep(music.duration)
-    os.remove(ttsname)
+    os.remove(tsname)
     mail.close()   
     
 if int(text) == 2:
@@ -117,23 +117,23 @@ if int(text) == 2:
     mail.login(unm,psw)                                                                     #login
     stat, total = mail.select('Inbox')                                                      #total number of mails in inbox
     print ("Number of mails in your inbox :"+str(total))
-    tts = gTTS(text="Total mails are :"+str(total), lang='en')                              #voice out
-    ttsname=("path/total.mp3")
-    tts.save(ttsname)
-    music = pyglet.media.load(ttsname, streaming = False)
+    ts = gTTS(text="Total mails are :"+str(total), lang='en')                              #voice out
+    tsname=("path/total.mp3")
+    ts.save(tsname)
+    music = pyglet.media.load(tsname, streaming = False)
     music.play()
     time.sleep(music.duration)
-    os.remove(ttsname)
+    os.remove(tsname)
     #unseen mails
     unseen = mail.search(None, 'UnSeen')                                                    # unseen count
     print ("Number of UnSeen mails :"+str(unseen))
-    tts = gTTS(text="Your Unseen mail :"+str(unseen), lang='en')
-    ttsname=("path/unseen.mp3")
-    tts.save(ttsname)
-    music = pyglet.media.load(ttsname, streaming = False)
+    ts = gTTS(text="Your Unseen mail :"+str(unseen), lang='en')
+    tsname=("path/unseen.mp3")
+    ts.save(tsname)
+    music = pyglet.media.load(tsname, streaming = False)
     music.play()
     time.sleep(music.duration)
-    os.remove(ttsname)
+    os.remove(tsname)
     #search mails
     result, data = mail.uid('search',None, "ALL")
     inbox_item_list = data[0].split()
@@ -144,13 +144,13 @@ if int(text) == 2:
     email_message = email.message_from_string(raw_email)
     print ("From: "+email_message['From'])
     print ("Subject: "+str(email_message['Subject']))
-    tts = gTTS(text="From: "+email_message['From']+" And Your subject: "+str(email_message['Subject']), lang='en')
-    ttsname=("path/mail.mp3")
-    tts.save(ttsname)
-    music = pyglet.media.load(ttsname, streaming = False)
+    ts = gTTS(text="From: "+email_message['From']+" And Your subject: "+str(email_message['Subject']), lang='en')
+    tsname=("path/mail.mp3")
+    ts.save(tsname)
+    music = pyglet.media.load(tsname, streaming = False)
     music.play()
     time.sleep(music.duration)
-    os.remove(ttsname)
+    os.remove(tsname)
     #Body part of mails
     stat, total1 = mail.select('Inbox')
     stat, data1 = mail.fetch(total1[0], "(UID BODY[TEXT])")
@@ -158,10 +158,10 @@ if int(text) == 2:
     soup = BeautifulSoup(msg, "html.parser")
     txt = soup.get_text()
     print ("Body :"+txt)
-    tts = gTTS(text="Body: "+txt, lang='en')
-    ttsname=("path/body.mp3")
-    tts.save(ttsname)
-    music = pyglet.media.load(ttsname, streaming = False)
+    ts = gTTS(text="Body: "+txt, lang='en')
+    tsname=("path/body.mp3")
+    ts.save(tsname)
+    music = pyglet.media.load(tsname, streaming = False)
     music.play()
     time.sleep(music.duration)
     os.remove(ttsname)
